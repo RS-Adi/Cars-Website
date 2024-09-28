@@ -17,7 +17,6 @@ class Home(View):
         # allowing us to display the Thing objects.
         return render(request, 'home.html', {'things': things})  # {'key': value} key-value pairs passed to the template
 
-
 class Item(View):
 
     def get(self, request, name):
