@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        body {
+            background: rgb(135, 200, 250);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .success-container {
+            background-color:  rgb(184, 234, 255);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: green;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: rgb(1, 24, 1);
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: rgb(25, 151, 247);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <h1>Success!</h1>
+        <p>Your car has been added successfully.</p>
+        <!-- Links with button styles -->
+        <a href="{% url 'home' %}" class="button">Back to Home</a>
+        <a href="{% url 'new_product' %}" class="button">Add Your New Car</a>
+    </div>
+</body>
+</html>

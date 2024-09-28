@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'new_product.css' %}" rel="stylesheet" type="text/css">
+    <title>Add New Car</title>
+    <style>
+        body {
+            background: rgb(135, 200, 250);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: rgb(184, 234, 255);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: rgb(2, 22, 38);
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+            color: rgb(0, 25, 76);
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+        }
+        button[type="submit"] {
+            background-color: rgb(25, 151, 247);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: rgb(20, 130, 220);
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .message p {
+            font-size: 1.1em;
+        }
+        .message .error {
+            color: red;
+        }
+        .message .success {
+            color: green;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: rgb(25, 151, 247);
+            font-size: 1em;
+        }
+        .back-link:hover {
+            text-decoration: underline;color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add Your New Car</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Car Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="manufacturer">Manufacturer:</label>
+            <input type="text" id="manufacturer" name="manufacturer">
+            <label for="cost">Cost:</label>
+            <input type="text" id="cost" name="cost">
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight">
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" name="image">
+            <button type="submit">Add</button>
+        </form>
+        <!-- Display error or success messages -->
+        <div class="message">
+            {% if form.errors %}
+                <p class="error">Invalid data. Please correct the errors.</p>
+            {% endif %}
+            {% if request.method == 'POST' and not form.errors %}
+                <p class="success">Successfully added!</p>
+            {% endif %}
+        </div>
+        <!-- Back to home link -->
+        <a href="{% url 'home' %}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
